@@ -1,0 +1,3 @@
+[submodule "rooibos"]
+	path = rooibos
+	url = https://github.com/WMInfoTech/rooibos.git
