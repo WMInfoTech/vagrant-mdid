@@ -8,7 +8,7 @@ in production.
 
 1. Clone this repository and submodules
 2. `vagrant up` (If you encounter any issues here, run `vagrant provision`
-   to clean them up)
+    to clean them up)
 3. `vagrant ssh`
 4. `cd /vagrant/rooibos`
 5. `virtualenv venv`
@@ -20,3 +20,16 @@ in production.
     from any WSGI server you like)
 11. `gunicorn rooibos.wsgi:application -w 5 -t 180 --log-file - `
 12. Things should be up and running, visit http://localhost:8080
+
+## Managing Storage
+
+Using local storage, a base path is pre-configured in nginx to exist at
+`/vagrant/rooibos/uploads`. The URL base should be
+`http://localhost:8080/uploads/%(filename)`.
+
+## Known Issues
+
+When creating storage and collections, the site will redirect to
+http://localhost/... insted of localhost:8080. The form submission is being
+handled correctly. Manually changing the URL to include the `:8080` seems
+to fix things.
