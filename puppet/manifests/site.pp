@@ -20,16 +20,36 @@ apt::source { 'mariadb':
 
 class { '::rabbitmq': }
 
+$users = {
+  'rooibos@localhost' => {
+    ensure        => 'present',
+    password_hash => undef,
+  }
+}
+
+$grants = {
+  'rooibos@localhost/rooibos' => {
+    ensure     => 'present',
+    privileges => ['ALL'],
+    table      => 'rooibos.*',
+    user       => 'rooibos@localhost',
+  }
+}
+
+$databases = {
+  'rooibos' => {
+    ensure  => 'present',
+    charset => 'utf8',
+  }
+}
+
 class { '::mysql::server':
   root_password => undef,
   package_name  => 'mariadb-server-10.0',
+  users         => $users,
+  databases     => $databases,
+  grants        => $grants,
   require       => Apt::Source['mariadb'],
-}
-
-mysql::db { 'rooibos':
-  user => 'rooibos',
-  password => '',
-  host     => 'localhost',
 }
 
 class { 'docker': }
