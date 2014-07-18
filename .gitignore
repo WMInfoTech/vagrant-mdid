@@ -3,3 +3,4 @@ puppet/.librarian
 *.tmp
 *.swp
 .vagrant/
+puppet/modules/*/
