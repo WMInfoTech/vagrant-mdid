@@ -8,6 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
   config.vm.network :forwarded_port, guest: 443, host: 8443, auto_correct: true
+  config.vm.network :forwarded_port, guest: 3306, host: 3306, auto_correct: true
   config.vm.network :forwarded_port, guest: 8983, host: 8983, auto_correct: true
 
   config.vm.provision "shell", path: "https://gist.githubusercontent.com/pcfens/edd61d29e6a2ef5cd175/raw/11a5cd23c28718f6e6e523afe26be01df768c2d3/gistfile1.sh"
