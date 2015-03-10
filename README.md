@@ -6,7 +6,7 @@ in production.
 
 ## Use
 
-1. Clone this repository and submodules
+1. Clone this repository and submodules `git clone --recursive https://github.com/WMInfoTech/vagrant-mdid.git`
 2. `vagrant up` (If you encounter any issues here, run `vagrant provision`
     to clean them up)
 3. `vagrant ssh`
